@@ -10,6 +10,7 @@ datasource db {
 model produtos {
   id        Int    @id @default(autoincrement())
   nome      String @db.VarChar(33)
+  photo      String @db.VarChar(255)
   preco     Int
   descricao Int
   categoria Int
