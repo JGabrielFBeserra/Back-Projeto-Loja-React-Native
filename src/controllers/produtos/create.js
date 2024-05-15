@@ -1,8 +1,8 @@
-import produtosModel from "../../models/productModel.js"
+import produtosModel from "../../models/produtosModel.js"
 
 const create = async (req, res) => {
     try{
-        const produto = req.body
+        const produtos = req.body
         const novoProduto = await produtosModel.create(produtos)
         return res.json({
             success: `Produto ${novoProduto.id} criado com sucesso!`,
