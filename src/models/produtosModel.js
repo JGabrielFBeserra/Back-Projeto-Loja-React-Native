@@ -13,5 +13,30 @@ const getAll = async () => {
     return await prisma.produtos.findMany()
 }
 
+const getById = async (id) => {
+    return await prisma.produtos.findUnique({
+        where: {
+            id
+        }
+    })
+}
 
-export default {create, getAll}
+const remove = async (id) => {
+    return await prisma.produtos.delete({
+        where: {
+            id
+        }
+    })
+}
+
+const edit = async (produtos) => {
+    return await prisma.produtos.update({
+        where: {
+            id: produtos.id
+        },
+        data: produtos
+    })
+}
+
+
+export default {create, getAll, getById, edit, remove}
