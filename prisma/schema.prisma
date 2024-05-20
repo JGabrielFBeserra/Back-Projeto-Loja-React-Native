@@ -15,3 +15,11 @@ model produtos {
   descricao String @db.VarChar(255)
   categoria Int
 }
+
+model users {
+  id    Int    @id @default(autoincrement())
+  nome  String @db.VarChar(100)
+  email String @db.VarChar(255)
+  photo String @db.VarChar(255)
+  pass  Int
+}
