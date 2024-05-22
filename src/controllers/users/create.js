@@ -1,12 +1,20 @@
-import produtosModel from "../../models/produtosModel.js"
+import userModel from "../../models/userModel"
+import zodErrorFormat from "../../../helpers/zodErrorFormat.js"
 
 const create = async (req, res) => {
     try{
-        const produtos = req.body
-        const novoProduto = await produtosModel.create(produtos)
+        const user = req.body
+        const validarResult = userModel.validateUserToCreate(user)
+        if(!validarResult.success){
+            return res.status(400).json({
+                error: `Dados de Cadastro Inválido`,
+                fields: zodErrorFormat(validarResult.error)
+            })
+        }
+        const result = await userModel.create(user)
         return res.json({
-            success: `Produto ${novoProduto.id} criado com sucesso!`,
-            produtos: novoProduto
+            success: `User ${result.id} criado com sucesso!`,
+            users: result
         })
     } catch (error) {
         console.log(error)

@@ -1,4 +1,4 @@
-import produtosModel from "../../models/produtosModel.js"
+import userModel from "../../models/userModel"
 
 const getById = async (req, res) => {
     try{

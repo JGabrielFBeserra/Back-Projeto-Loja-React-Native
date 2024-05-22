@@ -1,9 +1,17 @@
 import produtosModel from "../../models/produtosModel.js"
+import zodErrorFormat from "../../../helpers/zodErrorFormat.js"
 
 const update = async (req, res) => {
     try{
         const id = +req.params.id
-        const produtos = req.body
+        const produto = req.body
+        const validarResult = produtosModel.validateProdutoToUpdate(produto)
+        if(!validarResult.success){
+            return res.status(400).json({
+                error: `Dados de Atualização Inválido`,
+                fields: zodErrorFormat(validarResult.error)
+            })
+        }
         const result = await produtosModel.edit({id, ...produtos})
         res.json({
             success: `Produto ${id} editado com sucesso!`,

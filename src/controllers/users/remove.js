@@ -1,12 +1,12 @@
-import produtosModel from "../../models/produtosModel.js"
+import userModel from "../../models/userModel"
 
 const remove = async (req, res) => {
     try{
         const id = req.params.id
-        const result = await produtosModel.remove(+id)
+        const result = await userModel.remove(+id)
         res.json({
-            success: `Produto ${id} apagado com sucesso!`,
-            produtos: result
+            success: `User ${id} apagado com sucesso!`,
+            users: result
         })
     } catch (error) {
         console.log(error)
@@ -15,5 +15,3 @@ const remove = async (req, res) => {
         })
     }
 }
-
-export default remove

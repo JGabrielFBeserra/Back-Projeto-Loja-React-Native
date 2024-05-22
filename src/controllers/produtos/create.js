@@ -1,12 +1,20 @@
 import produtosModel from "../../models/produtosModel.js"
+import zodErrorFormat from "../../../helpers/zodErrorFormat.js"
 
 const create = async (req, res) => {
     try{
-        const produtos = req.body
-        const novoProduto = await produtosModel.create(produtos)
+        const produto = req.body
+        const validarResult = produtosModel.validateProdutoToCreate(produto)
+        if(!validarResult.success){
+            return res.status(400).json({
+                error: `Dados de Cadastro Inválido`,
+                fields: zodErrorFormat(validarResult.error)
+            })
+        }
+        const result = await produtosModel.create(produto)
         return res.json({
-            success: `Produto ${novoProduto.id} criado com sucesso!`,
-            produtos: novoProduto
+            success: `Produto ${result.id} criado com sucesso!`,
+            produtos: result
         })
     } catch (error) {
         console.log(error)
