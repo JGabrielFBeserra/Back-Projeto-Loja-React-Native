@@ -1,11 +1,11 @@
-import userModel from "../../models/userModel"
-import zodErrorFormat from "../../../helpers/zodErrorFormat"
+import userModel from "../../models/userModel.js"
+import zodErrorFormat from "../../../helpers/zodErrorFormat.js"
 
 const update = async (req, res) => {
     try{
         const id = +req.params.id
         const user = req.body
-        const validarResult = produtosModel.validateUserToUpdate(user)
+        const validarResult = userModel.validateUserToUpdate(user)
         if(!validarResult.success){
             return res.status(400).json({
                 error: `Dados de Atualização Inválido`,
@@ -14,8 +14,8 @@ const update = async (req, res) => {
         }
         const result = await userModel.edit({id, ...user})
         res.json({
-            success: `User ${id} editado com sucesso!`,
-            users: result
+            success: `User ${user.nome} editado com sucesso!`,
+            user: result
         })
     } catch (error) {
         console.log(error)

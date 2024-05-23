@@ -6,7 +6,7 @@ const remove = async (req, res) => {
         const result = await produtosModel.remove(+id)
         res.json({
             success: `Produto ${id} apagado com sucesso!`,
-            produtos: result
+            produto: result
         })
     } catch (error) {
         console.log(error)

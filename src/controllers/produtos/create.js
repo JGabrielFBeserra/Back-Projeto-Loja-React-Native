@@ -14,7 +14,7 @@ const create = async (req, res) => {
         const result = await produtosModel.create(produto)
         return res.json({
             success: `Produto ${result.id} criado com sucesso!`,
-            produtos: result
+            produto: result
         })
     } catch (error) {
         console.log(error)

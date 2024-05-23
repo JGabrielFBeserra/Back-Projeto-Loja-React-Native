@@ -3,7 +3,7 @@ import { z } from "zod"
 
 const prisma = new PrismaClient()
 
-const produtoSchema = z.object({
+const userSchema = z.object({
     id: z.number({
         required_error: "ID é obrigatório.",
         invalid_type_error: "O ID deve ser um número inteiro.",
@@ -35,14 +35,14 @@ const produtoSchema = z.object({
 
 })
 
-const validateUserToCreate = (produtoS) => {
-    const partialProdutoSchema = produtoSchema.partial({ id: true })
-    return partialProdutoSchema.safeParse(produtoS)
+const validateUserToCreate = (user) => {
+    const partialUserSchemaa = userSchema.partial({ id: true })
+    return partialUserSchemaa.safeParse(user)
 }
 
-const validateUserToUpdate = (produtoS) => {
-    const partialProdutoSchema = produtoSchema.partial({ id: true })
-    return partialProdutoSchema.safeParse(produtoS)
+const validateUserToUpdate = (user) => {
+    const partialUserSchemaa = userSchema.partial({ id: true })
+    return partialUserSchemaa.safeParse(user)
 }
 
 

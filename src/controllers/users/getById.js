@@ -1,12 +1,12 @@
-import userModel from "../../models/userModel"
+import userModel from "../../models/userModel.js"
 
 const getById = async (req, res) => {
     try{
         const id = req.params.id
-        const produtos = await produtosModel.getById(+id)
+        const produto = await userModel.getById(+id)
         res.json({
             success: `Produto ${id} encontrado com sucesso!`,
-            produtos
+            produto
         })
     } catch (error) {
         console.log(error)

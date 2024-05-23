@@ -1,9 +1,9 @@
 import express from 'express'
-import listAll from '../controllers/produtos/listAll.js'
-import getById from '../controllers/produtos/getById.js'
-import create from '../controllers/produtos/create.js'
-import update from '../controllers/produtos/update.js'
-import remove from '../controllers/produtos/remove.js'
+import listAll from '../controllers/users/listAll.js'
+import getById from '../controllers/users/getById.js'
+import create from '../controllers/users/create.js'
+import update from '../controllers/users/update.js'
+import remove from '../controllers/users/remove.js'
 
 const router = express.Router()
 

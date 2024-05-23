@@ -1,4 +1,4 @@
-import userModel from "../../models/userModel"
+import userModel from "../../models/userModel.js"
 import zodErrorFormat from "../../../helpers/zodErrorFormat.js"
 
 const create = async (req, res) => {
@@ -14,7 +14,7 @@ const create = async (req, res) => {
         const result = await userModel.create(user)
         return res.json({
             success: `User ${result.id} criado com sucesso!`,
-            users: result
+            user: result
         })
     } catch (error) {
         console.log(error)

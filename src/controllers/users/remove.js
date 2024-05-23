@@ -1,4 +1,4 @@
-import userModel from "../../models/userModel"
+import userModel from "../../models/userModel.js"
 
 const remove = async (req, res) => {
     try{
@@ -6,7 +6,7 @@ const remove = async (req, res) => {
         const result = await userModel.remove(+id)
         res.json({
             success: `User ${id} apagado com sucesso!`,
-            users: result
+            user: result
         })
     } catch (error) {
         console.log(error)
@@ -15,3 +15,5 @@ const remove = async (req, res) => {
         })
     }
 }
+
+export default remove

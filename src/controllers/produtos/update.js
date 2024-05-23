@@ -12,10 +12,10 @@ const update = async (req, res) => {
                 fields: zodErrorFormat(validarResult.error)
             })
         }
-        const result = await produtosModel.edit({id, ...produtos})
+        const result = await produtosModel.edit({id, ...produto})
         res.json({
             success: `Produto ${id} editado com sucesso!`,
-            produtos: result
+            produto: result
         })
     } catch (error) {
         console.log(error)

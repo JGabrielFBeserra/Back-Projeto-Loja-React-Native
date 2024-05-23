@@ -1,9 +1,10 @@
-import userModel from "../../models/userModel"
+import userModel from "../../models/userModel.js"
+
 const listAll = async (req, res) => {
     try{
         const users = await userModel.getAll()
         return res.json({
-            success: 'Users listados com sucesso!',
+            success: 'Usuários listados com sucesso!',
             users
         })
     } catch (error) {

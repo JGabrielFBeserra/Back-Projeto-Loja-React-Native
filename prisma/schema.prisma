@@ -21,5 +21,5 @@ model users {
   nome  String @db.VarChar(100)
   email String @db.VarChar(255)
   photo String @db.VarChar(255)
-  pass  Int
+   pass   String @db.Text
 }
