@@ -21,5 +21,17 @@ model users {
   nome  String @db.VarChar(100)
   email String @db.VarChar(255)
   photo String @db.VarChar(255)
-   pass   String @db.Text
+  pass   String @db.Text
+   sessions session[]
 }
+
+model session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  token     String   @db.VarChar(1000) @unique
+  createdAt DateTime @default(now())
+  user      users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId], name: "userId")
+}
+
+

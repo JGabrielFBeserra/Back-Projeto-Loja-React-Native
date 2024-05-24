@@ -2,6 +2,7 @@ import express from 'express'
 import { PORT, HOST } from './config.js'
 import produtosRouter from './routers/produtosRouter.js'
 import userRouter from './routers/userRouter.js'
+import authRouter from './routers/authRouter.js'
 import logger from './middlewares/logger.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
@@ -15,6 +16,7 @@ app.use(express.json())
 
 app.use('/produtos', produtosRouter)
 app.use('/user', userRouter)
+app.use('/auth', authRouter)
 
 app.listen(PORT, () => {
     console.log(`Server running on ${HOST}:${PORT}`)
